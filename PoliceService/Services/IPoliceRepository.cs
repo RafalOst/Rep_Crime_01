@@ -11,5 +11,7 @@ namespace PoliceService.Services
         Task DeletePoliceOfficerAsync(int policeOfficerId);
         Task<IEnumerable<Crime>> GetAllCrimesByPoliceOfficerIdAsync(int policeOfficerId);
         Task SaveChanges();
+        Task<PoliceOfficer> GetPoliceOfficerWithLowerCrimesTaskAsync();
+        Task<IEnumerable<Crime>> GetAllCrimesAsync();
     }
 }

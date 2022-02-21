@@ -32,6 +32,11 @@ namespace PoliceService.Services
             }
         }
 
+        public async Task<IEnumerable<Crime>> GetAllCrimesAsync()
+        {
+            return await _context.Crimes.ToListAsync();
+        }
+
         public async Task<IEnumerable<Crime>> GetAllCrimesByPoliceOfficerIdAsync(int policeOfficerId)
         {
             return await _context.Crimes
@@ -51,6 +56,14 @@ namespace PoliceService.Services
             return await _context.PoliceOfficers
             .Include(x => x.Crimes)
             .FirstOrDefaultAsync(c => c.Id == policeOfficerId);
+        }
+
+        public async Task<PoliceOfficer> GetPoliceOfficerWithLowerCrimesTaskAsync()
+        {
+            return await _context.PoliceOfficers
+            .Include(x => x.Crimes)
+            //.OrderBy(policeOfficers => policeOfficers.Crimes.Count)
+            .FirstOrDefaultAsync();
         }
 
         public async Task SaveChanges()

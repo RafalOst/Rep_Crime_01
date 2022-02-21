@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CrimeService.Models;
 using CrimeService.Services;
+using EventBus.Messaging.Events;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,9 +43,8 @@ namespace CrimeService.Controllers
 
             try
             {
-                //TODO dodac do masstranzita
-                //var eventMessage = _mapper.Map<NewCrimeEvent>(crime);
-                //await _publishEndpoint.Publish(eventMessage);
+                var eventMessage = _mapper.Map<NewCrimeEvent>(crime);
+                await _publishEndpoint.Publish(eventMessage);
             }
             catch (Exception ex)
             {

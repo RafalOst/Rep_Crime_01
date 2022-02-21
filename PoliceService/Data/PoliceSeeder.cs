@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommonItems;
+using Microsoft.EntityFrameworkCore;
 using PoliceService.Models;
 
 namespace PoliceService.Data
@@ -25,9 +26,23 @@ namespace PoliceService.Data
         {
             return new List<PoliceOfficer>() 
             { 
-                new PoliceOfficer() { Name = "Szczur", Rank = PoliceRank.Inspector},
-                new PoliceOfficer() { Name = "Chomik", Rank = PoliceRank.Detective},
-                new PoliceOfficer() { Name = "Mysz", Rank = PoliceRank.Constable}
+                new PoliceOfficer() { Id = 1, Name = "Szczur", Rank = PoliceRank.Inspector,
+                        Crimes = new List<Crime>()
+                        {
+                            new Crime()
+                            {
+                                Id = "602d2149e773f2a3990b47f5",
+                                CrimeType = CrimeEventType.Littering,
+                                CrimeReportStatus = CrimeReportStatus.Waiting,
+                                AssignedLawEnforcmentId = 1,
+                                Description = "Obywatel Kot wyrzuca smieci na ulice",
+                                PlaceOfEvent = "Krakow, ul. Kocia 7",
+                                Email = "kot@kot.com"
+                            } 
+                        }
+                    },
+                new PoliceOfficer() { Id = 2, Name = "Chomik", Rank = PoliceRank.Detective},
+                new PoliceOfficer() { Id = 3, Name = "Mysz", Rank = PoliceRank.Constable}
             };
         }
 
