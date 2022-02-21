@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PoliceService.Data;
+using PoliceService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<PoliceDbContext>(options => options.UseInMemoryDatabase("PoliceDb"));
+builder.Services.AddScoped<IPoliceRepository, PoliceRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
