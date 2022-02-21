@@ -12,8 +12,6 @@ namespace CrimeService.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
-        [BsonElement("Crime")]
-        [JsonPropertyName("Crime")]
         public CrimeEventType CrimeType { get; set; }
 
         [MaxLength(500)]

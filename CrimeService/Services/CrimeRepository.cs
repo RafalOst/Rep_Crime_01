@@ -28,9 +28,14 @@ namespace CrimeService.Services
             return await _context.Crimes.Find(_ => true).ToListAsync();
         }
 
-        public async Task RemoveCrimeAsync(string id)
+        public async Task<bool> RemoveCrimeAsync(string id)
         {
-            await _context.Crimes.DeleteOneAsync(x => x.Id == id);
+            FilterDefinition<Crime> filter = Builders<Crime>.Filter.Eq(p => p.Id, id);
+
+            var deleteResult = await _context.Crimes.DeleteOneAsync(filter);
+
+            return deleteResult.IsAcknowledged
+                && deleteResult.DeletedCount > 0;
         }
 
         public async Task UpdateAsyncCrime(string id, Crime updatedCrime)
