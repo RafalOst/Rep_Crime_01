@@ -1,4 +1,5 @@
 using CrimeService.Data;
+using CrimeService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ Console.WriteLine($"---> Opening in {builder.Environment.EnvironmentName} enviro
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<ICrimeDbContext, CrimeDbContext>();
+builder.Services.AddScoped<ICrimeRepository, CrimeRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
