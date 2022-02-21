@@ -1,6 +1,4 @@
-﻿using CrimeService.Models;
-
-namespace PoliceService.Models
+﻿namespace PoliceService.Models
 {
     public class PoliceOfficer
     {
