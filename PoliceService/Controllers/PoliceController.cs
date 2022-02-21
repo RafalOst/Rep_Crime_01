@@ -27,18 +27,21 @@ namespace PoliceService.Controllers
             return Ok(policeOfficer);
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<PoliceOfficer>> GetPoliceOfficerWithLowerTasks()
-        //{
-        //    var policeOfficer = await _policeRepository.GetPoliceOfficerWithLowerCrimesTaskAsync();
-        //    return Ok(policeOfficer);
-        //}
+        //to tests
+        [HttpGet]
+        [Route("policeOficerWithLowerTask")]
+        public async Task<ActionResult<PoliceOfficer>> GetPoliceOfficerWithLowerTasks()
+        {
+            var policeOfficer = await _policeRepository.GetPoliceOfficerWithLowerCrimesTaskAsync();
+            return Ok(policeOfficer);
+        }
 
-        //[HttpGet]
-        //public async Task<ActionResult<List<Crime>>> GetAllCrimes()
-        //{
-        //    var crimes = await _policeRepository.GetAllCrimesAsync();
-        //    return Ok(crimes);
-        //}
+        [HttpGet]
+        [Route("Crimes")]
+        public async Task<ActionResult<List<Crime>>> GetAllCrimes()
+        {
+            var crimes = await _policeRepository.GetAllCrimesAsync();
+            return Ok(crimes);
+        }
     }
 }

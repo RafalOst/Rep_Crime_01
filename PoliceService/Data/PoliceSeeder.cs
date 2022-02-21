@@ -33,7 +33,7 @@ namespace PoliceService.Data
                             {
                                 Id = "602d2149e773f2a3990b47f5",
                                 CrimeType = CrimeEventType.Littering,
-                                CrimeReportStatus = CrimeReportStatus.Waiting,
+                                CrimeReportStatus = CrimeReportStatus.Finished,
                                 AssignedLawEnforcmentId = 1,
                                 Description = "Obywatel Kot wyrzuca smieci na ulice",
                                 PlaceOfEvent = "Krakow, ul. Kocia 7",

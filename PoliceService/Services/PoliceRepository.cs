@@ -61,8 +61,8 @@ namespace PoliceService.Services
         public async Task<PoliceOfficer> GetPoliceOfficerWithLowerCrimesTaskAsync()
         {
             return await _context.PoliceOfficers
-            .Include(x => x.Crimes)
-            //.OrderBy(policeOfficers => policeOfficers.Crimes.Count)
+            .Include(x => x.Crimes.Where(x => x.CrimeReportStatus == CommonItems.CrimeReportStatus.Waiting))
+            .OrderBy(policeOfficers => policeOfficers.Crimes.Count)
             .FirstOrDefaultAsync();
         }
 
