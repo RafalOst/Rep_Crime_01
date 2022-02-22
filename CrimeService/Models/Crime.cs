@@ -16,7 +16,7 @@ namespace CrimeService.Models
         [MaxLength(500)]
         public string? Description { get; set; }
 
-        public CrimeReportStatus CrimeReportStatus { get; set; }
+        public CrimeReportStatus CrimeReportStatus { get; set; } = CrimeReportStatus.Waiting;
 
         [MinLength(10)]
         [MaxLength(250)]
