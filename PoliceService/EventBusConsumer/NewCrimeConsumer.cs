@@ -10,11 +10,13 @@ namespace PoliceService.EventBusConsumer
     {
         private readonly IMapper _mapper;
         private readonly IPoliceRepository _policeRepository;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public NewCrimeConsumer(IMapper mapper, IPoliceRepository policeRepository)
+        public NewCrimeConsumer(IMapper mapper, IPoliceRepository policeRepository, IPublishEndpoint publishEndpoint)
         {
             _mapper = mapper;
             _policeRepository = policeRepository;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task Consume(ConsumeContext<NewCrimeEvent> context)
@@ -22,10 +24,10 @@ namespace PoliceService.EventBusConsumer
             var crime = context.Message;
             Console.WriteLine($"Crime {crime.Id} consumed successfully. Adding crime to the crimes...");
 
-            await UpdateCrimes(crime);
+            await AssignCrime(crime);
         }
 
-        private async Task UpdateCrimes(NewCrimeEvent crime)
+        private async Task AssignCrime(NewCrimeEvent crime)
         {
             var crimeModel = _mapper.Map<Crime>(crime);
             var policeOfficer = await _policeRepository.GetPoliceOfficerWithLowerCrimesTaskAsync();
@@ -36,6 +38,16 @@ namespace PoliceService.EventBusConsumer
 
             policeOfficer.Crimes.Add(crimeModel);
             await _policeRepository.SaveChanges();
+
+            try
+            {
+                var eventMessage = new UpdateCrimeEvent { CrimeId = crimeModel.Id, AssignedLawEnforcmentId = crimeModel.AssignedLawEnforcmentId };
+                await _publishEndpoint.Publish(eventMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"--> Could not send asynchronously: {ex.Message}");
+            }
         }
     }
 }

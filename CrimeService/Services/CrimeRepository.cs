@@ -38,9 +38,9 @@ namespace CrimeService.Services
                 && deleteResult.DeletedCount > 0;
         }
 
-        public async Task UpdateAsyncCrime(string id, Crime updatedCrime)
+        public async Task UpdateAsyncCrime(Crime updatedCrime)
         {
-            await _context.Crimes.ReplaceOneAsync(x => x.Id == id, updatedCrime);
+            await _context.Crimes.ReplaceOneAsync(x => x.Id == updatedCrime.Id, updatedCrime);
         }
     }
 }

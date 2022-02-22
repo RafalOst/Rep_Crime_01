@@ -9,6 +9,7 @@ using EventBus.Messaging;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+Console.WriteLine($"---> Opening in {builder.Environment.EnvironmentName} environment");
 
 builder.Services.AddControllers()
         .AddNewtonsoftJson(s =>

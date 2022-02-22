@@ -7,7 +7,7 @@ namespace CrimeService.Services
         Task<IEnumerable<Crime>> GetAsyncCrimes();
         Task<Crime?> GetAsyncCrime(string id);
         Task CreateAsyncCrime(Crime newCrime);
-        Task UpdateAsyncCrime(string id, Crime updatedCrime);
+        Task UpdateAsyncCrime(Crime updatedCrime);
         Task <bool> RemoveCrimeAsync(string id);
     }
 

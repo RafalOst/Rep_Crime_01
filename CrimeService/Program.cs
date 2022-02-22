@@ -1,7 +1,9 @@
 using CrimeService.Data;
 using CrimeService.Services;
+using EventBus.Messaging;
 using MassTransit;
 using Newtonsoft.Json.Serialization;
+using PoliceService.EventBusConsumer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,9 +23,16 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddMassTransit(config =>
 {
+    config.AddConsumer<UpdateCrimeConsumer>();
+
     config.UsingRabbitMq((ctx, cfg) =>
     {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+        
+        cfg.ReceiveEndpoint(EventBusConst.CrimeUpdateQueue, c =>
+        {
+            c.ConfigureConsumer<UpdateCrimeConsumer>(ctx);
+        });
     });
 });
 builder.Services.AddMassTransitHostedService();
