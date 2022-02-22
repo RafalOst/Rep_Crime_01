@@ -25,7 +25,12 @@ namespace PoliceService.Controllers
         public async Task<ActionResult<PoliceOfficer>> GetPoliceOfficer(int id)
         {
             var policeOfficer = await _policeRepository.GetPoliceOfficerByIdAsync(id);
-            return Ok(policeOfficer);
+
+            if (policeOfficer != null)
+            {
+                return Ok(policeOfficer);
+            }
+            return NotFound();           
         }
 
         [HttpPut("{crimeId:length(24)}")]
@@ -35,21 +40,21 @@ namespace PoliceService.Controllers
             return NoContent();
         }
 
-        //to tests
-        [HttpGet]
-        [Route("policeOficerWithLowerTask")]
-        public async Task<ActionResult<PoliceOfficer>> GetPoliceOfficerWithLowerTasks()
-        {
-            var policeOfficer = await _policeRepository.GetPoliceOfficerWithLowerCrimesTaskAsync();
-            return Ok(policeOfficer);
-        }
+        ////to tests
+        //[HttpGet]
+        //[Route("policeOficerWithLowerTask")]
+        //public async Task<ActionResult<PoliceOfficer>> GetPoliceOfficerWithLowerTasks()
+        //{
+        //    var policeOfficer = await _policeRepository.GetPoliceOfficerWithLowerCrimesTaskAsync();
+        //    return Ok(policeOfficer);
+        //}
 
-        [HttpGet]
-        [Route("Crimes")]
-        public async Task<ActionResult<List<Crime>>> GetAllCrimes()
-        {
-            var crimes = await _policeRepository.GetAllCrimesAsync();
-            return Ok(crimes);
-        }
+        //[HttpGet]
+        //[Route("Crimes")]
+        //public async Task<ActionResult<List<Crime>>> GetAllCrimes()
+        //{
+        //    var crimes = await _policeRepository.GetAllCrimesAsync();
+        //    return Ok(crimes);
+        //}
     }
 }

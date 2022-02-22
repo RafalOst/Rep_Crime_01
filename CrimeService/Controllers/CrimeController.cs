@@ -33,7 +33,11 @@ namespace CrimeService.Controllers
         public async Task<ActionResult<CrimeReadDTO>> GetCrimeById(string id)
         {
             var crime = await _repository.GetAsyncCrime(id);
-            return Ok(_mapper.Map<CrimeReadDTO>(crime));
+            if (crime != null)
+            {
+                return Ok(_mapper.Map<CrimeReadDTO>(crime));
+            }
+            return NotFound();
         }
 
         [HttpPost]
@@ -56,26 +60,5 @@ namespace CrimeService.Controllers
 
             return CreatedAtRoute("GetCrime", new { id = crime.Id }, crime);
         }
-
-        //[HttpDelete("{id:length(24)}")]
-        //public async Task<IActionResult> DeleteCrimeById(string id)
-        //{
-        //    return Ok(await _repository.RemoveCrimeAsync(id));
-        //}
-
-        //[HttpPut("{id:length(24)}")]
-        //public async Task<IActionResult> UpdateCrime(string id, Crime updatedCrime)
-        //{
-        //    var crime = await _repository.GetAsyncCrime(id);
-
-        //    if(crime is null) { return NotFound(); }
-
-        //    updatedCrime.Id = crime.Id;
-
-        //    await _repository.UpdateAsyncCrime(id, updatedCrime);
-
-        //    return NoContent();
-        //}
-
     }
 }
