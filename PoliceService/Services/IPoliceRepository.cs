@@ -1,4 +1,5 @@
-﻿using PoliceService.Models;
+﻿using CommonItems;
+using PoliceService.Models;
 
 namespace PoliceService.Services
 {
@@ -13,5 +14,6 @@ namespace PoliceService.Services
         Task SaveChanges();
         Task<PoliceOfficer> GetPoliceOfficerWithLowerCrimesTaskAsync();
         Task<IEnumerable<Crime>> GetAllCrimesAsync();
+        Task UpdateCrimeStatusAsync(string crimeId, CrimeReportStatus newStatus);
     }
 }

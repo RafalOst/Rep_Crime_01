@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommonItems;
+using Microsoft.EntityFrameworkCore;
 using PoliceService.Data;
 using PoliceService.Models;
 
@@ -69,6 +70,13 @@ namespace PoliceService.Services
         public async Task SaveChanges()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateCrimeStatusAsync(string crimeId, CrimeReportStatus newStatus)
+        {
+            var crimeToUpdate = await _context.Crimes.FindAsync(crimeId);
+            crimeToUpdate.CrimeReportStatus = newStatus;
+            _context.SaveChanges();
         }
     }
 }

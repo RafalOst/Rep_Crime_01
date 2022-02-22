@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CommonItems;
+using Microsoft.AspNetCore.Mvc;
 using PoliceService.Models;
 using PoliceService.Services;
 
@@ -25,6 +26,13 @@ namespace PoliceService.Controllers
         {
             var policeOfficer = await _policeRepository.GetPoliceOfficerByIdAsync(id);
             return Ok(policeOfficer);
+        }
+
+        [HttpPut("{crimeId:length(24)}")]
+        public async Task<IActionResult> UpdateCrimeStatus(string crimeId, CrimeReportStatus newStatus)
+        {
+            _policeRepository.UpdateCrimeStatusAsync(crimeId, newStatus);
+            return NoContent();
         }
 
         //to tests
