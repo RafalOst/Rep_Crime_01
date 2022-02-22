@@ -28,6 +28,7 @@ namespace PoliceService.EventBusConsumer
         {
             var crime = await _crimeRepository.GetAsyncCrime(crimeToUpdate.CrimeId);
             crime.AssignedLawEnforcmentId = crimeToUpdate.AssignedLawEnforcmentId;
+            crime.CrimeReportStatus = crimeToUpdate.CrimeReportStatus;
 
             _crimeRepository.UpdateAsyncCrime(crime);
         }

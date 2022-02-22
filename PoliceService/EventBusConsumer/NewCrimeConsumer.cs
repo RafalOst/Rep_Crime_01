@@ -41,7 +41,12 @@ namespace PoliceService.EventBusConsumer
 
             try
             {
-                var eventMessage = new UpdateCrimeEvent { CrimeId = crimeModel.Id, AssignedLawEnforcmentId = crimeModel.AssignedLawEnforcmentId };
+                var eventMessage = new UpdateCrimeEvent 
+                { 
+                    CrimeId = crimeModel.Id, 
+                    AssignedLawEnforcmentId = crimeModel.AssignedLawEnforcmentId,
+                    CrimeReportStatus = crimeModel.CrimeReportStatus
+                };
                 await _publishEndpoint.Publish(eventMessage);
             }
             catch (Exception ex)

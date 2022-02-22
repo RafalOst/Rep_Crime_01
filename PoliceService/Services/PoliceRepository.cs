@@ -1,4 +1,6 @@
 ﻿using CommonItems;
+using EventBus.Messaging.Events;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using PoliceService.Data;
 using PoliceService.Models;
@@ -8,10 +10,12 @@ namespace PoliceService.Services
     public class PoliceRepository : IPoliceRepository
     {
         private readonly PoliceDbContext _context;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public PoliceRepository(PoliceDbContext context)
+        public PoliceRepository(PoliceDbContext context, IPublishEndpoint publishEndpoint)
         {
             _context = context;
+            _publishEndpoint = publishEndpoint;
         }
 
         public async Task AddCrime(Crime crime)
@@ -77,6 +81,21 @@ namespace PoliceService.Services
             var crimeToUpdate = await _context.Crimes.FindAsync(crimeId);
             crimeToUpdate.CrimeReportStatus = newStatus;
             _context.SaveChanges();
+
+            try
+            {
+                var eventMessage = new UpdateCrimeEvent
+                {
+                    CrimeId = crimeToUpdate.Id,
+                    AssignedLawEnforcmentId = crimeToUpdate.AssignedLawEnforcmentId,
+                    CrimeReportStatus = crimeToUpdate.CrimeReportStatus
+                };
+                await _publishEndpoint.Publish(eventMessage);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"--> Could not send asynchronously: {ex.Message}");
+            }
         }
     }
 }
