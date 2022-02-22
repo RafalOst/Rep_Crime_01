@@ -23,22 +23,25 @@ namespace CrimeService.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Crime>>> GetAllCrimes()
+        public async Task<ActionResult<IEnumerable<CrimeReadDTO>>> GetAllCrimes()
         {
             var crimes = await _repository.GetAsyncCrimes();
-            return Ok(crimes);
+            return Ok(_mapper.Map<IEnumerable<CrimeReadDTO>>(crimes));
         }
 
         [HttpGet("{id}", Name = "GetCrime")]
-        public async Task<ActionResult<Crime>> GetCrimeById(string id)
+        public async Task<ActionResult<CrimeReadDTO>> GetCrimeById(string id)
         {
             var crime = await _repository.GetAsyncCrime(id);
-            return Ok(crime);
+            return Ok(_mapper.Map<CrimeReadDTO>(crime));
         }
 
         [HttpPost]
-        public async Task<ActionResult<Crime>> PostCrime(Crime crime)
+        public async Task<ActionResult<CrimeCreateDTO>> PostCrime(CrimeCreateDTO crimeDto)
         {
+            
+            var crime = _mapper.Map<Crime>(crimeDto);
+            
             await _repository.CreateAsyncCrime(crime);
 
             try
@@ -54,25 +57,25 @@ namespace CrimeService.Controllers
             return CreatedAtRoute("GetCrime", new { id = crime.Id }, crime);
         }
 
-        [HttpDelete("{id:length(24)}")]
-        public async Task<IActionResult> DeleteCrimeById(string id)
-        {
-            return Ok(await _repository.RemoveCrimeAsync(id));
-        }
+        //[HttpDelete("{id:length(24)}")]
+        //public async Task<IActionResult> DeleteCrimeById(string id)
+        //{
+        //    return Ok(await _repository.RemoveCrimeAsync(id));
+        //}
 
-        [HttpPut("{id:length(24)}")]
-        public async Task<IActionResult> UpdateCrime(string id, Crime updatedCrime)
-        {
-            var crime = await _repository.GetAsyncCrime(id);
+        //[HttpPut("{id:length(24)}")]
+        //public async Task<IActionResult> UpdateCrime(string id, Crime updatedCrime)
+        //{
+        //    var crime = await _repository.GetAsyncCrime(id);
 
-            if(crime is null) { return NotFound(); }
+        //    if(crime is null) { return NotFound(); }
 
-            updatedCrime.Id = crime.Id;
+        //    updatedCrime.Id = crime.Id;
 
-            await _repository.UpdateAsyncCrime(id, updatedCrime);
+        //    await _repository.UpdateAsyncCrime(id, updatedCrime);
 
-            return NoContent();
-        }
+        //    return NoContent();
+        //}
 
     }
 }
