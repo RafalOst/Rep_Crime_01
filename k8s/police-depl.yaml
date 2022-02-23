@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: police-depl
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: policeservice
+  template:
+    metadata:
+      labels:
+        app: policeservice
+    spec:
+      containers:
+        - name: policeservice
+          image: rafalost/policeservice:latest
+          ports:
+          - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: policeclusterip-service
+spec:
+  type: ClusterIP
+  selector:
+    app: policeservice
+  ports:
+    - name: policeservice
+      protocol: TCP
+      port: 80
+      targetPort: 80

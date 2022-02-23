@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonItems", "CommonItems\CommonItems.csproj", "{08C6E1FA-53BF-439E-A509-BD9C938766E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonItems", "CommonItems\CommonItems.csproj", "{08C6E1FA-53BF-439E-A509-BD9C938766E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messaging", "EventBus.Messaging\EventBus.Messaging.csproj", "{3D5D832C-D07C-44FD-BA4D-16996B91D62E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Messaging", "EventBus.Messaging\EventBus.Messaging.csproj", "{3D5D832C-D07C-44FD-BA4D-16996B91D62E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrimeService", "CrimeService\CrimeService.csproj", "{2568ABB9-8A6A-4D8F-B9E8-03C8D4571755}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrimeService", "CrimeService\CrimeService.csproj", "{2568ABB9-8A6A-4D8F-B9E8-03C8D4571755}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoliceService", "PoliceService\PoliceService.csproj", "{1574496B-5CB7-48A1-A7C7-0388344242E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliceService", "PoliceService\PoliceService.csproj", "{1574496B-5CB7-48A1-A7C7-0388344242E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
