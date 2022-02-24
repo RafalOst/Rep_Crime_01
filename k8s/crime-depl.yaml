@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: crimeservice
-          image: rafalost/crimeservice:latest
+          image: rafalost/crimeservice:v2
           ports:
           - containerPort: 80
           env:
