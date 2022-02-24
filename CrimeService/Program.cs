@@ -41,6 +41,20 @@ builder.Services.AddMassTransitHostedService();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var devCorsPolicy = "devCorsPolicy";
+var prodCorsPolicy = "prodCorsPolicy";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(devCorsPolicy, builder => {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        //builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
+        //builder.SetIsOriginAllowed(origin => true);
+    });
+    options.AddPolicy(prodCorsPolicy, builder => {
+        builder.WithOrigins("http://localhost:44480").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -48,6 +62,12 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors(devCorsPolicy);
+}
+
+if (app.Environment.IsProduction())
+{
+    app.UseCors(prodCorsPolicy);
 }
 
 app.UseAuthorization();
