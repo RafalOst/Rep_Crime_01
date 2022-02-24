@@ -3,7 +3,7 @@ using PoliceService.Models;
 
 namespace PoliceService.Data
 {
-    public class PoliceDbContext: DbContext
+    public class PoliceDbContext : DbContext
     {
         public PoliceDbContext(DbContextOptions<PoliceDbContext> options) : base(options)
         {

@@ -2,7 +2,7 @@
 
 namespace EventBus.Messaging.Events
 {
-    public class NewCrimeEvent: BaseEvent
+    public class NewCrimeEvent : BaseEvent
     {
         public string Id { get; set; }
 

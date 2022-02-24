@@ -41,9 +41,9 @@ namespace PoliceService.EventBusConsumer
 
             try
             {
-                var eventMessage = new UpdateCrimeEvent 
-                { 
-                    CrimeId = crimeModel.Id, 
+                var eventMessage = new UpdateCrimeEvent
+                {
+                    CrimeId = crimeModel.Id,
                     AssignedLawEnforcmentId = crimeModel.AssignedLawEnforcmentId,
                     CrimeReportStatus = crimeModel.CrimeReportStatus
                 };

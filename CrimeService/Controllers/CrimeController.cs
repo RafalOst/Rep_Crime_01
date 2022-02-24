@@ -9,7 +9,7 @@ namespace CrimeService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CrimeController: ControllerBase
+    public class CrimeController : ControllerBase
     {
         private readonly ICrimeRepository _repository;
         private readonly IPublishEndpoint _publishEndpoint;
@@ -43,9 +43,9 @@ namespace CrimeService.Controllers
         [HttpPost]
         public async Task<ActionResult<CrimeCreateDTO>> PostCrime(CrimeCreateDTO crimeDto)
         {
-            
+
             var crime = _mapper.Map<Crime>(crimeDto);
-            
+
             await _repository.CreateAsyncCrime(crime);
 
             try

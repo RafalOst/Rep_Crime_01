@@ -24,8 +24,8 @@ namespace PoliceService.Data
 
         private static IEnumerable<PoliceOfficer> GetPoliceOfficers()
         {
-            return new List<PoliceOfficer>() 
-            { 
+            return new List<PoliceOfficer>()
+            {
                 new PoliceOfficer() { Id = 1, Name = "Szczur", Rank = PoliceRank.Inspector,
                     Crimes = new List<Crime>()
                     {
@@ -38,7 +38,7 @@ namespace PoliceService.Data
                             Description = "Obywatel Kot wyrzuca smieci na ulice",
                             PlaceOfEvent = "Krakow, ul. Kocia 7",
                             Email = "kot@kot.com"
-                        } 
+                        }
                     }
                 },
                 new PoliceOfficer() { Id = 2, Name = "Chomik", Rank = PoliceRank.Detective,

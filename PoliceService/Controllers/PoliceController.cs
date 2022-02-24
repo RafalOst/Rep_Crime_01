@@ -30,7 +30,7 @@ namespace PoliceService.Controllers
             {
                 return Ok(policeOfficer);
             }
-            return NotFound();           
+            return NotFound();
         }
 
         [HttpPut("{crimeId:length(24)}")]

@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Crime_Rep_Front/User_Front/ClientApp/.angular/cache

@@ -20,12 +20,12 @@ namespace CrimeService.Data
         {
             return new List<Crime>()
             {
-                new Crime() 
-                { 
-                    Id = "602d2149e773f2a3990b47f5", 
-                    CrimeType = CrimeEventType.Littering, 
-                    CrimeReportStatus = CrimeReportStatus.Waiting, 
-                    AssignedLawEnforcmentId = 1, 
+                new Crime()
+                {
+                    Id = "602d2149e773f2a3990b47f5",
+                    CrimeType = CrimeEventType.Littering,
+                    CrimeReportStatus = CrimeReportStatus.Waiting,
+                    AssignedLawEnforcmentId = 1,
                     Description = "Obywatel Kot wyrzuca smieci na ulice",
                     PlaceOfEvent = "Krakow, ul. Kocia 7",
                     Email = "kot@kot.com"

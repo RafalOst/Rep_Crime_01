@@ -8,7 +8,7 @@ namespace CrimeService.Services
         Task<Crime?> GetAsyncCrime(string id);
         Task CreateAsyncCrime(Crime newCrime);
         Task UpdateAsyncCrime(Crime updatedCrime);
-        Task <bool> RemoveCrimeAsync(string id);
+        Task<bool> RemoveCrimeAsync(string id);
     }
 
 }

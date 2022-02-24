@@ -28,7 +28,7 @@ builder.Services.AddMassTransit(config =>
     config.UsingRabbitMq((ctx, cfg) =>
     {
         cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
-        
+
         cfg.ReceiveEndpoint(EventBusConst.CrimeUpdateQueue, c =>
         {
             c.ConfigureConsumer<UpdateCrimeConsumer>(ctx);
@@ -45,12 +45,14 @@ var devCorsPolicy = "devCorsPolicy";
 var prodCorsPolicy = "prodCorsPolicy";
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(devCorsPolicy, builder => {
+    options.AddPolicy(devCorsPolicy, builder =>
+    {
         builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
         //builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
         //builder.SetIsOriginAllowed(origin => true);
     });
-    options.AddPolicy(prodCorsPolicy, builder => {
+    options.AddPolicy(prodCorsPolicy, builder =>
+    {
         builder.WithOrigins("http://localhost:44480").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     });
 });

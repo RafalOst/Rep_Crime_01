@@ -1,10 +1,10 @@
-using Microsoft.EntityFrameworkCore;
-using PoliceService.Data;
-using PoliceService.Services;
-using Newtonsoft.Json.Serialization;
-using MassTransit;
-using PoliceService.EventBusConsumer;
 using EventBus.Messaging;
+using MassTransit;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Serialization;
+using PoliceService.Data;
+using PoliceService.EventBusConsumer;
+using PoliceService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
