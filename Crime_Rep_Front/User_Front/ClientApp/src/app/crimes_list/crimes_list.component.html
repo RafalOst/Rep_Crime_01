@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h1>Crime List:</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Crime ID</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Police ID</th>
+      <th>Date</th>
+      <th>Place of Event</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let crime of crimeList">
+      <td>{{ crime.id }}</td>
+      <td>{{ crime.crimeType }}</td>
+      <td>{{ crime.crimeReportStatus }}</td>
+      <td>{{ crime.assignedLawEnforcmentId }}</td>
+      <td>{{ crime.createdDate | date:'short'}}</td>
+      <td>{{ crime.placeOfEvent }}</td>
+      <td>{{ crime.description }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

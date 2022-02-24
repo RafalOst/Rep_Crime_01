@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrimeService", "CrimeServic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoliceService", "PoliceService\PoliceService.csproj", "{1574496B-5CB7-48A1-A7C7-0388344242E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User_Front", "..\REP_CRIME.01_FRONT\Crime_Rep_Front\User_Front\User_Front.csproj", "{E4F0608E-1C67-479B-AFF2-31BEA937A947}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User_Front", "Crime_Rep_Front\User_Front\User_Front.csproj", "{BA6BA0EF-010C-4066-BE61-5075D1F33F4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{1574496B-5CB7-48A1-A7C7-0388344242E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1574496B-5CB7-48A1-A7C7-0388344242E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1574496B-5CB7-48A1-A7C7-0388344242E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E4F0608E-1C67-479B-AFF2-31BEA937A947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4F0608E-1C67-479B-AFF2-31BEA937A947}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4F0608E-1C67-479B-AFF2-31BEA937A947}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4F0608E-1C67-479B-AFF2-31BEA937A947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6BA0EF-010C-4066-BE61-5075D1F33F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6BA0EF-010C-4066-BE61-5075D1F33F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6BA0EF-010C-4066-BE61-5075D1F33F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6BA0EF-010C-4066-BE61-5075D1F33F4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

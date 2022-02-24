@@ -1,0 +1,26 @@
+<h1>Report Crime</h1>
+<form>
+  <div class="form-group" [formGroup]="newCrimeForm">
+    <div class="form-control">
+      <label for="exampleFormControlInput1">Email address (optional)</label>
+      <input formControlName="email" type="email" class="form-control" id="email" maxlength="150" placeholder="name@example.com">
+    </div>
+    <div class="form-control">
+      <label for="exampleFormControlSelect1">Type of crime</label>
+      <select formControlName="crimeType" class="form-control" id="crimeType" required>
+        <option>Littering</option>
+        <option>Assault</option>
+        <option>Burglary</option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label for="exampleFormControlInput1">Place of crime</label>
+      <input type="text" formControlName="placeOfEvent" class="form-control" id="placeOfEvent" minlength="10" maxlength="250" placeholder="adres ex. Krakow, ul. Parkowa 3" required>
+    </div>
+    <div class="form-control">
+      <label for="exampleFormControlTextarea1">Crime description</label>
+      <textarea class="form-control" formControlName="description" id="description" rows="3" minlength="10" maxlength="500" required></textarea>
+    </div>
+  </div>
+  <button type="submit" (click)="addCrime()" class="btn btn-primary">Report</button>
+</form>
